@@ -11,7 +11,6 @@ body {
   padding: 1px 20px;
 }
 
-
 h1 {
   font-weight: 100;
   font-size: 42px;
@@ -22,7 +21,7 @@ h1 {
 .garage-cover {
   z-index: 4;
   background-color: blue;
-  transition: 2s;
+  transition: 5s;
   height: 400px;
   width: 600px;
   position: absolute;
@@ -38,25 +37,58 @@ h1 {
   background-color: lightblue;
 }
 
-
-.italics {
-  color: gray;
-  padding-bottom: 4px;
-  margin-top: -10px;
-  font-style: italic;
-}
-
-.break {
-  border-bottom: 1px solid lightgray;
-  padding-top: 15px;
+.array-list {
+  position: absolute;
+  bottom: 230px;
 }
 
 .title {
   color: gray;
   font-size: 20px;
+  margin-left: 10px;
+  margin-top: 25px;
 }
 
-.img-container {
- text-align: center;
-  padding-bottom: 12px;
+.sort-btn {
+  float: right;
+}
+
+.open-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.lengths {
+  display: inline-block;
+  font-size: 10px;
+}
+
+.post-form {
+  position: absolute;
+  bottom: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.indv-info-pop-up {
+  float: right;
+  border: 1px solid lightblue;
+  padding: 10px;
+  height: 200px;
+  position: relative;
+}
+
+.indv-item {
+  margin: 10px;
+  font-size: 16px;
+}
+
+.indv-why {
+  margin: 10px;
+  font-size: 13px;
+}
+
+.indv-clean {
+  margin: 10px;
+  font-size: 10px;
 }
