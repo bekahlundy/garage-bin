@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/bekahlundy/garage-bin/issues"
   },
-  "homepage": "https://github.com/bekahlundy/garage-bin#readme"
+  "homepage": "https://github.com/bekahlundy/garage-bin#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
 }
