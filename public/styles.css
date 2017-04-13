@@ -1,0 +1,48 @@
+body {
+  background-color: darkslategray;
+  font-family: "Helvetica Neue";
+}
+
+.container {
+  background-color: white;
+  width: 400px;
+  max-height: 550px;
+  margin: 60px auto;
+  padding: 1px 20px;
+}
+
+.shrink {
+  float: right;
+  margin-top: 20px;
+}
+
+h1 {
+  font-weight: 100;
+}
+
+h2 {
+  font-weight: 300;
+  margin-top: -15px;
+}
+
+.italics {
+  color: gray;
+  padding-bottom: 4px;
+  margin-top: -10px;
+  font-style: italic;
+}
+
+.break {
+  border-bottom: 1px solid lightgray;
+  padding-top: 15px;
+}
+
+.title {
+  color: gray;
+  font-size: 20px;
+}
+
+.img-container {
+ text-align: center;
+  padding-bottom: 12px;
+}

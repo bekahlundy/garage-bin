@@ -22,7 +22,6 @@ app.get('/', (request, response) => {
 
 app.get('/api/items', (request, response) => {
   const items = app.locals.items
-
   response.json({ items })
 })
 
@@ -45,19 +44,12 @@ app.get('/api/items/:id', (request, response) => {
 })
 
 app.post('/api/items', (request, response) => {
-  const { item } = request.body
-  const id = md5(item)
+  const { item, whyItStays, cleanliness } = request.body
+  const newItem = { item, whyItStays, cleanliness }
 
-  if (!item) {
-    return response.status(422).send({
-      error: 'No item property provided'
-    })
-  }
-
-  app.locals.items[id] = item
-
-  response.status(201).json({ id, item })
-})
+  app.locals.items.push(newItem)
+  response.json(newItem)
+  })
 
 
 app.listen(app.get('port'), () => {
