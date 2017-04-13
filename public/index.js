@@ -11,20 +11,48 @@ const fetchItems = () => {
     .then((response) => {
       clear()
       displayItems(response)
+      itemCount(response)
     })
   }
 fetchItems()
 
 const clear = () => {
   itemList.empty()
+  $('.array-list').empty()
 }
 
 const displayItems = (response) => {
-  console.log(response)
   response.items.map((el) => {
     itemList.prepend(
         `<p>${el.item}<p>`
 )})
+}
+
+const countArrayLengths = (sparklingArr, dustyArr, rancidArr) => {
+  let total = sparklingArr.length + dustyArr.length + rancidArr.length
+  $('.array-list').append(
+    `<p>sparkling: ${sparklingArr.length}</p>
+     <p>dusty: ${dustyArr.length}</p>
+     <p>rancid: ${rancidArr.length}</p>
+     <p>total: ${total}</p>`
+  )
+}
+
+
+const itemCount = (response) => {
+  let sparklingArr = []
+  let dustyArr = []
+  let rancidArr = []
+  response.items.map((el) => {
+    if(el.cleanliness == 'sparkling') {
+      sparklingArr.push(el.cleanliness)
+    } else if (el.cleanliness == 'dusty') {
+      dustyArr.push(el.cleanliness)
+    } else {
+      rancidArr.push(el.cleanliness)
+    }
+  })
+  countArrayLengths(sparklingArr, dustyArr, rancidArr)
 }
 
 
