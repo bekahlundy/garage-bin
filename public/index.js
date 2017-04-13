@@ -1,6 +1,6 @@
 const submitButton = $('.submit-btn')
+const openButton = $('.open-btn')
 const sortButton = $('.sort-btn')
-const garageDoor = $('.garage-door')
 const bubble = $('.bubble')
 const itemList = $('.item-list')
 let allItems
@@ -124,4 +124,8 @@ submitButton.on('click', (e) => {
   const cleanliness = $('.cleanliness-input').val()
   postItems(item, whyItStays, cleanliness)
   fetchItems()
+})
+
+openButton.on('click', () => {
+  $('.garage-cover').toggleClass('open')
 })
