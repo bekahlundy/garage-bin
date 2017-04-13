@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const md5 = require('md5')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static('public'))
 
 app.set('port', process.env.PORT || 3000)
 app.locals.title = 'Garage Bin'
@@ -13,7 +15,9 @@ app.locals.items = [
 ]
 
 app.get('/', (request, response) => {
-  response.send('Hello World!')
+  fs.readFile(`${__dirname}/index.html`, (err, file) => {
+    response.send(file)
+  })
 })
 
 app.get('/api/items', (request, response) => {
@@ -42,7 +46,7 @@ app.get('/api/items/:id', (request, response) => {
 
 app.post('/api/items', (request, response) => {
   const { item } = request.body
-  const id = Date.now()
+  const id = md5(item)
 
   if (!item) {
     return response.status(422).send({
