@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha ./tests/**.js || true"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,11 @@
   "homepage": "https://github.com/bekahlundy/garage-bin#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "express": "^4.15.2",
-    "md5": "^2.2.1"
+    "jquery": "^3.2.1",
+    "md5": "^2.2.1",
+    "mocha": "^3.2.0"
   }
 }
