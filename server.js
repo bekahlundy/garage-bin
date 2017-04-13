@@ -9,6 +9,7 @@ app.use(express.static('public'))
 
 app.set('port', process.env.PORT || 3000)
 app.locals.title = 'Garage Bin'
+app.locals.counter = 3
 app.locals.items = [
   {id: 1, item: 'Bike', whyItStays: 'I use it all the time for travel', cleanliness:'sparkling'},
   {id: 2, item: 'RollerBlades', whyItStays: 'I use them when I am happy', cleanliness:'dusty'},
@@ -44,8 +45,10 @@ app.get('/api/items/:id', (request, response) => {
 })
 
 app.post('/api/items', (request, response) => {
+  const id = app.locals.counter++
   const { item, whyItStays, cleanliness } = request.body
-  const newItem = { item, whyItStays, cleanliness }
+  const newItem = { id, item, whyItStays, cleanliness }
+  console.log(newItem)
 
   app.locals.items.push(newItem)
   response.json(newItem)
