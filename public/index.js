@@ -31,7 +31,7 @@ const clearList = () => {
 const displayItems = (response) => {
   response.map((el) => {
     itemList.prepend(
-      `<p>${el.item}<p>`
+      `<p class='indv-item' id=${el.id}>${el.item}<p>`
 )})
 }
 
@@ -44,6 +44,14 @@ const countArrayLengths = (sparklingArr, dustyArr, rancidArr) => {
      <p>total: ${total}</p>`
   )
 }
+
+itemList.on('click', '.indv-item', (e) => {
+  console.log(e.target)
+
+  $('.indv-info-pop-up').append(
+    `<p>yellow</p>`
+  )
+})
 
 
 const itemCount = (response) => {
