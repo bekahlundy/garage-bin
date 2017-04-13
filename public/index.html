@@ -3,18 +3,21 @@
   <head>
     <meta charset='utf-8'>
     <title>Garage Bin</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
+    <h1>Welcome to my Garage!</h1>
+    <div class='garage-cover'></div>
     <div class='container'>
-  <h1>Welcome to my Garage!<h1>
-    <div class='garage-door'>
       <div class='break'></div>
-      <p class='title'>items</p>
+      <p class='title'>Items</p>
+      <hr>
       <button class='sort-btn'>Sort</button>
+      <div class='indv-info-pop-up'></div>
       <div class='item-list'>
       </div>
       <div class='array-list'></div>
-      <div class='indv-info-pop-up'
       <form class='post-form'>
         <input class='item-input' placeholder='enter your item name'>
         <input class='whyItStays-input' placeholder='enter why it stays'>
@@ -25,8 +28,9 @@
         </select>
         <button class='submit-btn'>sumbit</button>
       </form>
-    </div>
+
 </div>
+<button class='open-btn'>Garage Door Control</button>
   </body>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
   <script src='./index.js'></script>

@@ -1,6 +1,6 @@
 const submitButton = $('.submit-btn')
+const openButton = $('.open-btn')
 const sortButton = $('.sort-btn')
-const garageDoor = $('.garage-door')
 const bubble = $('.bubble')
 const itemList = $('.item-list')
 let allItems
@@ -42,10 +42,10 @@ const displayItems = (response) => {
 const countArrayLengths = (sparklingArr, dustyArr, rancidArr) => {
   let total = sparklingArr.length + dustyArr.length + rancidArr.length
   $('.array-list').append(
-    `<p>sparkling: ${sparklingArr.length}</p>
-     <p>dusty: ${dustyArr.length}</p>
-     <p>rancid: ${rancidArr.length}</p>
-     <p>total: ${total}</p>`
+    `<p class='lengths'>sparkling: ${sparklingArr.length}</p>
+     <p class='lengths'>dusty: ${dustyArr.length}</p>
+     <p class='lengths'>rancid: ${rancidArr.length}</p>
+     <p class='lengths'>total: ${total}</p>`
   )
 }
 
@@ -55,9 +55,9 @@ itemList.on('click', '.indv-item', (e) => {
     if (el.id == e.target.id) {
       clearPopUp()
       $('.indv-info-pop-up').append(
-        `<p>${el.item}</p>
-        <p>${el.whyItStays}</p>
-        <p>${el.cleanliness}</p>`
+        `<p class='indv-item'>${el.item}</p>
+        <p class='indv-why'>${el.whyItStays}</p>
+        <p class='indv-clean'>${el.cleanliness}</p>`
       )
     }
   })
@@ -124,4 +124,8 @@ submitButton.on('click', (e) => {
   const cleanliness = $('.cleanliness-input').val()
   postItems(item, whyItStays, cleanliness)
   fetchItems()
+})
+
+openButton.on('click', () => {
+  $('.garage-cover').toggleClass('open')
 })
