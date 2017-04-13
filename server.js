@@ -34,7 +34,6 @@ app.get('/api/items/:id', (request, response) => {
        response.json(el)
     }
   })
-
   if (!item) {
     return response.status(404).send({
       error: 'item id does not exist'
@@ -51,10 +50,16 @@ app.post('/api/items', (request, response) => {
   console.log(newItem)
 
   app.locals.items.push(newItem)
-  response.json(newItem)
+  if(!item) {
+    response.status(422).send('Did not receive correct body params')
+  } else {
+    response.json(newItem)
+  }
   })
 
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`)
 })
+
+module.exports = app

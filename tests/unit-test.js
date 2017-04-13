@@ -4,8 +4,7 @@ const assert = require('chai').assert
 
 describe('App', () => {
 
-
-  it('should work', () => {
-
+  it('should have a fetchItems method', () => {
+    
   })
 })
