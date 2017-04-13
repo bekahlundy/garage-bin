@@ -28,6 +28,10 @@ const clearList = () => {
   itemList.empty()
 }
 
+const clearPopUp = () => {
+  $('.indv-info-pop-up').empty()
+}
+
 const displayItems = (response) => {
   response.map((el) => {
     itemList.prepend(
@@ -46,11 +50,17 @@ const countArrayLengths = (sparklingArr, dustyArr, rancidArr) => {
 }
 
 itemList.on('click', '.indv-item', (e) => {
-  console.log(e.target)
-
-  $('.indv-info-pop-up').append(
-    `<p>yellow</p>`
-  )
+  console.log(e.target.id)
+  allItems.items.map((el) => {
+    if (el.id == e.target.id) {
+      clearPopUp()
+      $('.indv-info-pop-up').append(
+        `<p>${el.item}</p>
+        <p>${el.whyItStays}</p>
+        <p>${el.cleanliness}</p>`
+      )
+    }
+  })
 })
 
 
