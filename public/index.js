@@ -1,4 +1,3 @@
-const closeGarage = $('.close-btn')
 const submitButton = $('.submit-btn')
 const sortButton = $('.sort-btn')
 const garageDoor = $('.garage-door')
@@ -99,9 +98,6 @@ const postItems = (item, whyItStays, cleanliness) => {
   })
 }
 
-closeGarage.on('click', () => {
-  garageDoor.toggle()
-})
 
 submitButton.on('click', (e) => {
   e.preventDefault()
