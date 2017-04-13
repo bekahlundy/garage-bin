@@ -1,19 +1,23 @@
 const closeGarage = $('.close-btn')
 const submitButton = $('.submit-btn')
+const sortButton = $('.sort-btn')
 const garageDoor = $('.garage-door')
 const bubble = $('.bubble')
 const itemList = $('.item-list')
-
+let allItems
+let sorted = false
 
 const fetchItems = () => {
   fetch('http://localhost:3000/api/items')
     .then(response => response.json())
     .then((response) => {
+      allItems = response
       clear()
-      displayItems(response)
+      displayItems(response.items)
       itemCount(response)
     })
   }
+
 fetchItems()
 
 const clear = () => {
@@ -21,10 +25,14 @@ const clear = () => {
   $('.array-list').empty()
 }
 
+const clearList = () => {
+  itemList.empty()
+}
+
 const displayItems = (response) => {
-  response.items.map((el) => {
+  response.map((el) => {
     itemList.prepend(
-        `<p>${el.item}<p>`
+      `<p>${el.item}<p>`
 )})
 }
 
@@ -55,6 +63,27 @@ const itemCount = (response) => {
   countArrayLengths(sparklingArr, dustyArr, rancidArr)
 }
 
+sortButton.on('click', () => {
+  if (sorted === false) {
+    let sortedFalse = allItems.items.sort((a, b) => {
+      if(a.item.toLowerCase() > b.item.toLowerCase()) return -1;
+      if(a.item.toLowerCase() < b.item.toLowerCase()) return 1;
+    })
+    sorted = true
+    clearList()
+    displayItems(sortedFalse)
+  } else {
+    let sortedTrue = allItems.items.sort((a, b) => {
+      if(a.item.toLowerCase() > b.item.toLowerCase()) return 1;
+      if(a.item.toLowerCase() < b.item.toLowerCase()) return -1;
+    })
+    clearList()
+    displayItems(sortedTrue)
+    sorted = false
+  }
+})
+
+
 
 const postItems = (item, whyItStays, cleanliness) => {
   fetch('http://localhost:3000/api/items', {
@@ -69,7 +98,6 @@ const postItems = (item, whyItStays, cleanliness) => {
     })
   })
 }
-
 
 closeGarage.on('click', () => {
   garageDoor.toggle()
