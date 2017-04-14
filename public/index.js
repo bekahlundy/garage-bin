@@ -2,7 +2,7 @@ let allItems
 let sorted = false
 
 const fetchItems = () => {
-  fetch('http://localhost:3000/api/items')
+  fetch('/api/items')
     .then(response => response.json())
     .then((response) => {
       allItems = response
@@ -106,7 +106,7 @@ $('.sort-btn').on('click', () => {
 
 
 const postItems = (item, whyItStays, cleanliness) => {
-  fetch('http://localhost:3000/api/items', {
+  fetch('/api/items', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
