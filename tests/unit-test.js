@@ -1,11 +1,17 @@
-const chai = require('chai');
-const expect = chai.expect;
-const assert = require('chai').assert
+const expect = require('chai').expect;
+const should = require('chai').should;
+const jsdom = require('mocha-jsdom')
+const {sortUp, sortDown} = require('../public/index.js');
 
-describe('App', () => {
+describe('Unit Tests', () => {
+  jsdom()
 
-
-  it('should work', () => {
-
+  before(() => {
+    $ = require('jquery')
+    fetch = require('fetch')
   })
+
+  it('should sortUp', () => {
+      expect(sortUp(list)).to.equal(1)
+    })
 })
