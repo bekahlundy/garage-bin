@@ -47,7 +47,6 @@ app.post('/api/items', (request, response) => {
   const id = app.locals.counter++
   const { item, whyItStays, cleanliness } = request.body
   const newItem = { id, item, whyItStays, cleanliness }
-  console.log(newItem)
 
   app.locals.items.push(newItem)
   if(!item) {

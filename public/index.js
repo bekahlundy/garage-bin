@@ -1,8 +1,3 @@
-const submitButton = $('.submit-btn')
-const openButton = $('.open-btn')
-const sortButton = $('.sort-btn')
-const bubble = $('.bubble')
-const itemList = $('.item-list')
 let allItems
 let sorted = false
 
@@ -20,12 +15,12 @@ const fetchItems = () => {
 fetchItems()
 
 const clear = () => {
-  itemList.empty()
+  $('.item-list').empty()
   $('.array-list').empty()
 }
 
 const clearList = () => {
-  itemList.empty()
+  $('.item-list').empty()
 }
 
 const clearPopUp = () => {
@@ -34,7 +29,7 @@ const clearPopUp = () => {
 
 const displayItems = (response) => {
   response.map((el) => {
-    itemList.prepend(
+    $('.item-list').prepend(
       `<p class='indv-item' id=${el.id}>${el.item}<p>`
 )})
 }
@@ -49,7 +44,7 @@ const countArrayLengths = (sparklingArr, dustyArr, rancidArr) => {
   )
 }
 
-itemList.on('click', '.indv-item', (e) => {
+$('.item-list').on('click', '.indv-item', (e) => {
   console.log(e.target.id)
   allItems.items.map((el) => {
     if (el.id == e.target.id) {
@@ -80,23 +75,31 @@ const itemCount = (response) => {
   countArrayLengths(sparklingArr, dustyArr, rancidArr)
 }
 
-sortButton.on('click', () => {
+const sortUp = () => {
+  let sortedFalse = allItems.items.sort((a, b) => {
+    if(a.item.toLowerCase() > b.item.toLowerCase()) return -1;
+    if(a.item.toLowerCase() < b.item.toLowerCase()) return 1;
+  })
+  sorted = true
+  clearList()
+  displayItems(sortedFalse)
+}
+
+const sortDown = () => {
+  let sortedTrue = allItems.items.sort((a, b) => {
+    if(a.item.toLowerCase() > b.item.toLowerCase()) return 1;
+    if(a.item.toLowerCase() < b.item.toLowerCase()) return -1;
+  })
+  clearList()
+  displayItems(sortedTrue)
+  sorted = false
+}
+
+$('.sort-btn').on('click', () => {
   if (sorted === false) {
-    let sortedFalse = allItems.items.sort((a, b) => {
-      if(a.item.toLowerCase() > b.item.toLowerCase()) return -1;
-      if(a.item.toLowerCase() < b.item.toLowerCase()) return 1;
-    })
-    sorted = true
-    clearList()
-    displayItems(sortedFalse)
+    sortUp()
   } else {
-    let sortedTrue = allItems.items.sort((a, b) => {
-      if(a.item.toLowerCase() > b.item.toLowerCase()) return 1;
-      if(a.item.toLowerCase() < b.item.toLowerCase()) return -1;
-    })
-    clearList()
-    displayItems(sortedTrue)
-    sorted = false
+    sortDown()
   }
 })
 
@@ -117,7 +120,7 @@ const postItems = (item, whyItStays, cleanliness) => {
 }
 
 
-submitButton.on('click', (e) => {
+$('.submit-btn').on('click', (e) => {
   e.preventDefault()
   const item = $('.item-input').val()
   const whyItStays = $('.whyItStays-input').val()
@@ -126,6 +129,6 @@ submitButton.on('click', (e) => {
   fetchItems()
 })
 
-openButton.on('click', () => {
+$('.open-btn').on('click', () => {
   $('.garage-cover').toggleClass('open')
 })
